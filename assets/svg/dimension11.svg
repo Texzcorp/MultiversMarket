@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <!-- Dégradés -->
+    <linearGradient id="skyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0a0a20" />
+      <stop offset="100%" stop-color="#151538" />
+    </linearGradient>
+    
+    <linearGradient id="soundGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6e00ff" stop-opacity="0.7" />
+      <stop offset="50%" stop-color="#9d4edd" stop-opacity="0.5" />
+      <stop offset="100%" stop-color="#00f2ff" stop-opacity="0.7" />
+    </linearGradient>
+    
+    <radialGradient id="echoGlow" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="1" />
+      <stop offset="40%" stop-color="#9d4edd" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#6e00ff" stop-opacity="0" />
+    </radialGradient>
+    
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    
+    <!-- Animations pour les ondes sonores -->
+    <animate xlink:href="#soundWave1" attributeName="r" values="0;200;0" dur="10s" repeatCount="indefinite" />
+    <animate xlink:href="#soundWave1" attributeName="opacity" values="0.8;0;0.8" dur="10s" repeatCount="indefinite" />
+    
+    <animate xlink:href="#soundWave2" attributeName="r" values="0;200;0" dur="10s" repeatCount="indefinite" begin="3s" />
+    <animate xlink:href="#soundWave2" attributeName="opacity" values="0.7;0;0.7" dur="10s" repeatCount="indefinite" begin="3s" />
+    
+    <animate xlink:href="#soundWave3" attributeName="r" values="0;200;0" dur="10s" repeatCount="indefinite" begin="6s" />
+    <animate xlink:href="#soundWave3" attributeName="opacity" values="0.6;0;0.6" dur="10s" repeatCount="indefinite" begin="6s" />
+    
+    <!-- Animation pour les structures sonores -->
+    <animate xlink:href="#soundStructure1" attributeName="d" 
+             values="M50,220 C70,200 90,210 110,190 C130,170 150,180 170,160 L170,250 L50,250 Z;
+                     M50,220 C70,190 90,220 110,180 C130,160 150,190 170,150 L170,250 L50,250 Z;
+                     M50,220 C70,200 90,210 110,190 C130,170 150,180 170,160 L170,250 L50,250 Z" 
+             dur="15s" repeatCount="indefinite" />
+             
+    <animate xlink:href="#soundStructure2" attributeName="d" 
+             values="M230,220 C250,200 270,210 290,190 C310,170 330,180 350,160 L350,250 L230,250 Z;
+                     M230,220 C250,190 270,220 290,180 C310,160 330,190 350,150 L350,250 L230,250 Z;
+                     M230,220 C250,200 270,210 290,190 C310,170 330,180 350,160 L350,250 L230,250 Z" 
+             dur="18s" repeatCount="indefinite" />
+  </defs>
+  
+  <!-- Arrière-plan -->
+  <rect width="400" height="300" fill="url(#skyGradient)" />
+  
+  <!-- Ondes sonores visibles -->
+  <g>
+    <circle id="soundWave1" cx="200" cy="150" r="0" fill="none" stroke="url(#soundGradient)" stroke-width="2" opacity="0.8" />
+    <circle id="soundWave2" cx="200" cy="150" r="0" fill="none" stroke="url(#soundGradient)" stroke-width="1.5" opacity="0.7" />
+    <circle id="soundWave3" cx="200" cy="150" r="0" fill="none" stroke="url(#soundGradient)" stroke-width="1" opacity="0.6" />
+  </g>
+  
+  <!-- Source sonore centrale -->
+  <circle cx="200" cy="150" r="15" fill="url(#echoGlow)" filter="url(#glow)" opacity="0.9">
+    <animate attributeName="r" values="15;18;15" dur="2s" repeatCount="indefinite" />
+    <animate attributeName="opacity" values="0.9;1;0.9" dur="2s" repeatCount="indefinite" />
+  </circle>
+  
+  <!-- Structures architecturales formées par le son -->
+  <g opacity="0.8" filter="url(#glow)">
+    <!-- Structure gauche -->
+    <path id="soundStructure1" d="M50,220 C70,200 90,210 110,190 C130,170 150,180 170,160 L170,250 L50,250 Z" fill="url(#soundGradient)" opacity="0.7" />
+    
+    <!-- Structure droite -->
+    <path id="soundStructure2" d="M230,220 C250,200 270,210 290,190 C310,170 330,180 350,160 L350,250 L230,250 Z" fill="url(#soundGradient)" opacity="0.7" />
+    
+    <!-- Structure centrale -->
+    <path d="M170,180 L200,120 L230,180 Z" fill="url(#soundGradient)" opacity="0.8">
+      <animate attributeName="d" 
+               values="M170,180 L200,120 L230,180 Z;
+                       M160,180 L200,110 L240,180 Z;
+                       M170,180 L200,120 L230,180 Z" 
+               dur="10s" repeatCount="indefinite" />
+    </path>
+  </g>
+  
+  <!-- Visualisations d'ondes sonores (formes d'onde) -->
+  <g opacity="0.7">
+    <!-- Forme d'onde 1 -->
+    <path d="M50,100 C60,90 70,110 80,100 C90,90 100,110 110,100 C120,90 130,110 140,100 C150,90 160,110 170,100" 
+          fill="none" stroke="#00f2ff" stroke-width="1">
+      <animate attributeName="d" 
+               values="M50,100 C60,90 70,110 80,100 C90,90 100,110 110,100 C120,90 130,110 140,100 C150,90 160,110 170,100;
+                       M50,100 C60,110 70,90 80,100 C90,110 100,90 110,100 C120,110 130,90 140,100 C150,110 160,90 170,100;
+                       M50,100 C60,90 70,110 80,100 C90,90 100,110 110,100 C120,90 130,110 140,100 C150,90 160,110 170,100" 
+               dur="5s" repeatCount="indefinite" />
+    </path>
+    
+    <!-- Forme d'onde 2 -->
+    <path d="M230,100 C240,90 250,110 260,100 C270,90 280,110 290,100 C300,90 310,110 320,100 C330,90 340,110 350,100" 
+          fill="none" stroke="#9d4edd" stroke-width="1">
+      <animate attributeName="d" 
+               values="M230,100 C240,90 250,110 260,100 C270,90 280,110 290,100 C300,90 310,110 320,100 C330,90 340,110 350,100;
+                       M230,100 C240,110 250,90 260,100 C270,110 280,90 290,100 C300,110 310,90 320,100 C330,110 340,90 350,100;
+                       M230,100 C240,90 250,110 260,100 C270,90 280,110 290,100 C300,90 310,110 320,100 C330,90 340,110 350,100" 
+               dur="6s" repeatCount="indefinite" />
+    </path>
+    
+    <!-- Forme d'onde 3 -->
+    <path d="M100,70 C110,60 120,80 130,70 C140,60 150,80 160,70 C170,60 180,80 190,70 C200,60 210,80 220,70 C230,60 240,80 250,70 C260,60 270,80 280,70 C290,60 300,80 310,70" 
+          fill="none" stroke="#6e00ff" stroke-width="1">
+      <animate attributeName="d" 
+               values="M100,70 C110,60 120,80 130,70 C140,60 150,80 160,70 C170,60 180,80 190,70 C200,60 210,80 220,70 C230,60 240,80 250,70 C260,60 270,80 280,70 C290,60 300,80 310,70;
+                       M100,70 C110,80 120,60 130,70 C140,80 150,60 160,70 C170,80 180,60 190,70 C200,80 210,60 220,70 C230,80 240,60 250,70 C260,80 270,60 280,70 C290,80 300,60 310,70;
+                       M100,70 C110,60 120,80 130,70 C140,60 150,80 160,70 C170,60 180,80 190,70 C200,60 210,80 220,70 C230,60 240,80 250,70 C260,60 270,80 280,70 C290,60 300,80 310,70" 
+               dur="7s" repeatCount="indefinite" />
+    </path>
+  </g>
+  
+  <!-- Résonateurs (objets qui captent et amplifient le son) -->
+  <g>
+    <!-- Résonateur 1 -->
+    <path d="M120,200 L120,170 L130,170 L130,200 Z" fill="#151538" stroke="#00f2ff" stroke-width="1" opacity="0.8">
+      <animate attributeName="opacity" values="0.8;1;0.8" dur="4s" repeatCount="indefinite" />
+    </path>
+    
+    <!-- Résonateur 2 -->
+    <path d="M270,200 L270,170 L280,170 L280,200 Z" fill="#151538" stroke="#00f2ff" stroke-width="1" opacity="0.8">
+      <animate attributeName="opacity" values="0.8;1;0.8" dur="4s" repeatCount="indefinite" begin="2s" />
+    </path>
+    
+    <!-- Résonateur 3 -->
+    <path d="M190,200 L190,160 L210,160 L210,200 Z" fill="#151538" stroke="#00f2ff" stroke-width="1" opacity="0.9">
+      <animate attributeName="opacity" values="0.9;1;0.9" dur="3s" repeatCount="indefinite" />
+    </path>
+  </g>
+  
+  <!-- Particules sonores -->
+  <g>
+    <circle cx="150" cy="130" r="1" fill="#ffffff" opacity="0.8">
+      <animate attributeName="cx" values="150;155;150" dur="8s" repeatCount="indefinite" />
+      <animate attributeName="cy" values="130;125;130" dur="8s" repeatCount="indefinite" />
+    </circle>
+    
+    <circle cx="250" cy="130" r="1" fill="#ffffff" opacity="0.8">
+      <animate attributeName="cx" values="250;245;250" dur="9s" repeatCount="indefinite" />
+      <animate attributeName="cy" values="130;125;130" dur="9s" repeatCount="indefinite" />
+    </circle>
+    
+    <circle cx="200" cy="100" r="1" fill="#ffffff" opacity="0.8">
+      <animate attributeName="cx" values="200;205;200" dur="10s" repeatCount="indefinite" />
+      <animate attributeName="cy" values="100;95;100" dur="10s" repeatCount="indefinite" />
+    </circle>
+  </g>
+  
+  <!-- Lignes de fréquence -->
+  <g opacity="0.5">
+    <line x1="50" y1="250" x2="350" y2="250" stroke="#ffffff" stroke-width="0.5" />
+    <line x1="50" y1="240" x2="350" y2="240" stroke="#ffffff" stroke-width="0.3" />
+    <line x1="50" y1="230" x2="350" y2="230" stroke="#ffffff" stroke-width="0.2" />
+  </g>
+  
+  <!-- Titre de la dimension -->
+  <text x="200" y="50" font-family="'Orbitron', sans-serif" font-size="20" fill="#ffffff" text-anchor="middle">Écho Éternel</text>
+</svg>

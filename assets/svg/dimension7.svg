@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <!-- Dégradés -->
+    <linearGradient id="skyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0a0a20" />
+      <stop offset="100%" stop-color="#151538" />
+    </linearGradient>
+    
+    <linearGradient id="microGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00f2ff" stop-opacity="0.7" />
+      <stop offset="50%" stop-color="#9d4edd" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#6e00ff" stop-opacity="0.7" />
+    </linearGradient>
+    
+    <radialGradient id="cellGlow" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="1" />
+      <stop offset="40%" stop-color="#9d4edd" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#6e00ff" stop-opacity="0" />
+    </radialGradient>
+    
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    
+    <!-- Pattern pour la grille microscopique -->
+    <pattern id="microGrid" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#6e00ff" stroke-width="0.2" opacity="0.3"/>
+    </pattern>
+    
+    <!-- Animations pour les cellules -->
+    <animate xlink:href="#cell1" attributeName="r" values="8;10;8" dur="4s" repeatCount="indefinite" />
+    <animate xlink:href="#cell2" attributeName="r" values="6;8;6" dur="5s" repeatCount="indefinite" />
+    <animate xlink:href="#cell3" attributeName="r" values="7;9;7" dur="6s" repeatCount="indefinite" />
+    
+    <!-- Animation pour les connexions -->
+    <animate xlink:href="#connection1" attributeName="stroke-dashoffset" from="100" to="0" dur="10s" repeatCount="indefinite" />
+    <animate xlink:href="#connection2" attributeName="stroke-dashoffset" from="100" to="0" dur="8s" repeatCount="indefinite" />
+    <animate xlink:href="#connection3" attributeName="stroke-dashoffset" from="100" to="0" dur="12s" repeatCount="indefinite" />
+  </defs>
+  
+  <!-- Arrière-plan -->
+  <rect width="400" height="300" fill="url(#skyGradient)" />
+  
+  <!-- Grille microscopique -->
+  <rect width="400" height="300" fill="url(#microGrid)" opacity="0.5" />
+  
+  <!-- Cercle principal représentant le monde microscopique -->
+  <circle cx="200" cy="150" r="100" fill="url(#microGradient)" opacity="0.2" />
+  
+  <!-- Structures cellulaires -->
+  <g filter="url(#glow)">
+    <!-- Cellule centrale -->
+    <circle id="mainCell" cx="200" cy="150" r="15" fill="url(#cellGlow)" opacity="0.9">
+      <animate attributeName="r" values="15;17;15" dur="3s" repeatCount="indefinite" />
+    </circle>
+    
+    <!-- Cellules satellites -->
+    <circle id="cell1" cx="160" cy="130" r="8" fill="url(#cellGlow)" opacity="0.8" />
+    <circle id="cell2" cx="230" cy="170" r="6" fill="url(#cellGlow)" opacity="0.7" />
+    <circle id="cell3" cx="190" cy="190" r="7" fill="url(#cellGlow)" opacity="0.8" />
+    <circle id="cell4" cx="240" cy="120" r="5" fill="url(#cellGlow)" opacity="0.6" />
+    <circle id="cell5" cx="170" cy="170" r="4" fill="url(#cellGlow)" opacity="0.5" />
+  </g>
+  
+  <!-- Connexions entre les cellules (routes de la nano-civilisation) -->
+  <g>
+    <path id="connection1" d="M200,150 L160,130" stroke="#00f2ff" stroke-width="0.5" stroke-dasharray="2,2" stroke-dashoffset="0" opacity="0.8" />
+    <path id="connection2" d="M200,150 L230,170" stroke="#00f2ff" stroke-width="0.5" stroke-dasharray="2,2" stroke-dashoffset="0" opacity="0.8" />
+    <path id="connection3" d="M200,150 L190,190" stroke="#00f2ff" stroke-width="0.5" stroke-dasharray="2,2" stroke-dashoffset="0" opacity="0.8" />
+    <path id="connection4" d="M200,150 L240,120" stroke="#00f2ff" stroke-width="0.5" stroke-dasharray="2,2" stroke-dashoffset="0" opacity="0.8" />
+    <path id="connection5" d="M200,150 L170,170" stroke="#00f2ff" stroke-width="0.5" stroke-dasharray="2,2" stroke-dashoffset="0" opacity="0.8" />
+  </g>
+  
+  <!-- Nano-bâtiments sur les cellules -->
+  <g>
+    <!-- Bâtiments sur la cellule principale -->
+    <rect x="195" y="145" width="2" height="4" fill="#ffffff" opacity="0.9" />
+    <rect x="199" y="146" width="2" height="3" fill="#ffffff" opacity="0.9" />
+    <rect x="203" y="145" width="2" height="4" fill="#ffffff" opacity="0.9" />
+    
+    <!-- Bâtiments sur les cellules satellites -->
+    <rect x="158" y="128" width="1" height="2" fill="#ffffff" opacity="0.8" />
+    <rect x="161" y="129" width="1" height="1.5" fill="#ffffff" opacity="0.8" />
+    
+    <rect x="229" y="169" width="1" height="2" fill="#ffffff" opacity="0.8" />
+    <rect x="231" y="168" width="1" height="2.5" fill="#ffffff" opacity="0.8" />
+    
+    <rect x="189" y="189" width="1" height="2" fill="#ffffff" opacity="0.8" />
+    <rect x="191" y="188" width="1" height="2" fill="#ffffff" opacity="0.8" />
+    
+    <rect x="239" y="119" width="1" height="1.5" fill="#ffffff" opacity="0.8" />
+    <rect x="241" y="119" width="1" height="1" fill="#ffffff" opacity="0.8" />
+    
+    <rect x="169" y="169" width="1" height="1" fill="#ffffff" opacity="0.8" />
+    <rect x="171" y="170" width="1" height="1.5" fill="#ffffff" opacity="0.8" />
+  </g>
+  
+  <!-- Nano-véhicules se déplaçant sur les connexions -->
+  <circle cx="180" cy="140" r="1" fill="#ffffff" opacity="0.9">
+    <animate attributeName="cx" values="200;160" dur="5s" repeatCount="indefinite" />
+    <animate attributeName="cy" values="150;130" dur="5s" repeatCount="indefinite" />
+  </circle>
+  
+  <circle cx="215" cy="160" r="1" fill="#ffffff" opacity="0.9">
+    <animate attributeName="cx" values="200;230" dur="6s" repeatCount="indefinite" />
+    <animate attributeName="cy" values="150;170" dur="6s" repeatCount="indefinite" />
+  </circle>
+  
+  <circle cx="195" cy="170" r="1" fill="#ffffff" opacity="0.9">
+    <animate attributeName="cx" values="200;190" dur="4s" repeatCount="indefinite" />
+    <animate attributeName="cy" values="150;190" dur="4s" repeatCount="indefinite" />
+  </circle>
+  
+  <!-- Particules d'énergie -->
+  <g>
+    <circle cx="200" cy="150" r="30" fill="none" stroke="#00f2ff" stroke-width="0.2" opacity="0.5">
+      <animate attributeName="r" values="30;40;30" dur="10s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.5;0.2;0.5" dur="10s" repeatCount="indefinite" />
+    </circle>
+    
+    <circle cx="200" cy="150" r="50" fill="none" stroke="#00f2ff" stroke-width="0.2" opacity="0.3">
+      <animate attributeName="r" values="50;60;50" dur="15s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.3;0.1;0.3" dur="15s" repeatCount="indefinite" />
+    </circle>
+    
+    <circle cx="200" cy="150" r="70" fill="none" stroke="#00f2ff" stroke-width="0.2" opacity="0.2">
+      <animate attributeName="r" values="70;80;70" dur="20s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.2;0.05;0.2" dur="20s" repeatCount="indefinite" />
+    </circle>
+  </g>
+  
+  <!-- Indicateurs d'échelle -->
+  <g opacity="0.7">
+    <line x1="50" y1="250" x2="70" y2="250" stroke="#ffffff" stroke-width="0.5" />
+    <text x="60" y="245" font-family="'Orbitron', sans-serif" font-size="5" fill="#ffffff" text-anchor="middle">1 nm</text>
+    
+    <line x1="330" y1="250" x2="350" y2="250" stroke="#ffffff" stroke-width="0.5" />
+    <text x="340" y="245" font-family="'Orbitron', sans-serif" font-size="5" fill="#ffffff" text-anchor="middle">1 nm</text>
+  </g>
+  
+  <!-- Titre de la dimension -->
+  <text x="200" y="50" font-family="'Orbitron', sans-serif" font-size="20" fill="#ffffff" text-anchor="middle">Nano-Civilisation</text>
+</svg>

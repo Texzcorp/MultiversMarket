@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <!-- Dégradés -->
+    <linearGradient id="skyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0a0a20" />
+      <stop offset="100%" stop-color="#151538" />
+    </linearGradient>
+    
+    <linearGradient id="waterGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00f2ff" stop-opacity="0.7" />
+      <stop offset="50%" stop-color="#0077b6" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#03045e" stop-opacity="0.9" />
+    </linearGradient>
+    
+    <radialGradient id="starGlow1" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="1" />
+      <stop offset="40%" stop-color="#f0f8ff" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#00f2ff" stop-opacity="0" />
+    </radialGradient>
+    
+    <radialGradient id="starGlow2" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="1" />
+      <stop offset="40%" stop-color="#fffacd" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#ffd700" stop-opacity="0" />
+    </radialGradient>
+    
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    
+    <filter id="waterRipple" x="-20%" y="-20%" width="140%" height="140%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.01" numOctaves="2" result="turbulence" seed="3" />
+      <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="10" xChannelSelector="R" yChannelSelector="G" />
+    </filter>
+    
+    <!-- Animations pour les étoiles sous l'eau -->
+    <animate xlink:href="#star1" attributeName="r" values="5;7;5" dur="4s" repeatCount="indefinite" />
+    <animate xlink:href="#star2" attributeName="r" values="4;6;4" dur="3s" repeatCount="indefinite" />
+    <animate xlink:href="#star3" attributeName="r" values="3;5;3" dur="5s" repeatCount="indefinite" />
+    <animate xlink:href="#star4" attributeName="r" values="2;4;2" dur="2.5s" repeatCount="indefinite" />
+    <animate xlink:href="#star5" attributeName="r" values="6;8;6" dur="6s" repeatCount="indefinite" />
+    
+    <!-- Animation pour les vagues -->
+    <animate xlink:href="#wave1" attributeName="d" 
+             values="M0,120 C50,110 100,130 150,120 C200,110 250,130 300,120 C350,110 400,130 400,120 L400,300 L0,300 Z;
+                     M0,120 C50,130 100,110 150,130 C200,120 250,110 300,130 C350,120 400,110 400,120 L400,300 L0,300 Z;
+                     M0,120 C50,110 100,130 150,120 C200,110 250,130 300,120 C350,110 400,130 400,120 L400,300 L0,300 Z" 
+             dur="10s" repeatCount="indefinite" />
+    
+    <animate xlink:href="#wave2" attributeName="d" 
+             values="M0,150 C60,140 120,160 180,150 C240,140 300,160 360,150 L400,150 L400,300 L0,300 Z;
+                     M0,150 C60,160 120,140 180,160 C240,150 300,140 360,160 L400,150 L400,300 L0,300 Z;
+                     M0,150 C60,140 120,160 180,150 C240,140 300,160 360,150 L400,150 L400,300 L0,300 Z" 
+             dur="8s" repeatCount="indefinite" />
+    
+    <animate xlink:href="#wave3" attributeName="d" 
+             values="M0,180 C40,170 80,190 120,180 C160,170 200,190 240,180 C280,170 320,190 360,180 L400,180 L400,300 L0,300 Z;
+                     M0,180 C40,190 80,170 120,190 C160,180 200,170 240,190 C280,180 320,170 360,190 L400,180 L400,300 L0,300 Z;
+                     M0,180 C40,170 80,190 120,180 C160,170 200,190 240,180 C280,170 320,190 360,180 L400,180 L400,300 L0,300 Z" 
+             dur="12s" repeatCount="indefinite" />
+  </defs>
+  
+  <!-- Arrière-plan -->
+  <rect width="400" height="300" fill="url(#skyGradient)" />
+  
+  <!-- Océan lumineux -->
+  <path id="wave1" d="M0,120 C50,110 100,130 150,120 C200,110 250,130 300,120 C350,110 400,130 400,120 L400,300 L0,300 Z" 
+        fill="url(#waterGradient)" opacity="0.9" />
+  
+  <path id="wave2" d="M0,150 C60,140 120,160 180,150 C240,140 300,160 360,150 L400,150 L400,300 L0,300 Z" 
+        fill="url(#waterGradient)" opacity="0.7" />
+  
+  <path id="wave3" d="M0,180 C40,170 80,190 120,180 C160,170 200,190 240,180 C280,170 320,190 360,180 L400,180 L400,300 L0,300 Z" 
+        fill="url(#waterGradient)" opacity="0.5" />
+  
+  <!-- Étoiles sous l'eau -->
+  <circle id="star1" cx="100" cy="200" r="5" fill="url(#starGlow1)" filter="url(#glow)" />
+  <circle id="star2" cx="250" cy="220" r="4" fill="url(#starGlow2)" filter="url(#glow)" />
+  <circle id="star3" cx="180" cy="180" r="3" fill="url(#starGlow1)" filter="url(#glow)" />
+  <circle id="star4" cx="320" cy="240" r="2" fill="url(#starGlow2)" filter="url(#glow)" />
+  <circle id="star5" cx="70" cy="250" r="6" fill="url(#starGlow1)" filter="url(#glow)" />
+  
+  <!-- Étoiles naissantes (plus brillantes) -->
+  <circle cx="150" cy="230" r="8" fill="url(#starGlow2)" filter="url(#glow)" opacity="0.9">
+    <animate attributeName="opacity" values="0.9;1;0.9" dur="3s" repeatCount="indefinite" />
+    <animate attributeName="r" values="8;10;8" dur="3s" repeatCount="indefinite" />
+  </circle>
+  
+  <circle cx="280" cy="190" r="7" fill="url(#starGlow1)" filter="url(#glow)" opacity="0.9">
+    <animate attributeName="opacity" values="0.9;1;0.9" dur="4s" repeatCount="indefinite" />
+    <animate attributeName="r" values="7;9;7" dur="4s" repeatCount="indefinite" />
+  </circle>
+  
+  <!-- Bulles d'eau -->
+  <g filter="url(#waterRipple)">
+    <circle cx="120" cy="160" r="2" fill="#ffffff" opacity="0.7">
+      <animate attributeName="cy" values="160;140;120" dur="10s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.7;0.5;0" dur="10s" repeatCount="indefinite" />
+    </circle>
+    
+    <circle cx="220" cy="170" r="1.5" fill="#ffffff" opacity="0.6">
+      <animate attributeName="cy" values="170;150;130" dur="8s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.6;0.4;0" dur="8s" repeatCount="indefinite" />
+    </circle>
+    
+    <circle cx="300" cy="180" r="2.5" fill="#ffffff" opacity="0.8">
+      <animate attributeName="cy" values="180;160;140" dur="12s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.8;0.6;0" dur="12s" repeatCount="indefinite" />
+    </circle>
+  </g>
+  
+  <!-- Rayons de lumière traversant l'eau -->
+  <g opacity="0.3">
+    <path d="M80,0 L60,300" stroke="#ffffff" stroke-width="1" />
+    <path d="M180,0 L200,300" stroke="#ffffff" stroke-width="1" />
+    <path d="M320,0 L300,300" stroke="#ffffff" stroke-width="0.5" />
+  </g>
+  
+  <!-- Particules lumineuses flottantes -->
+  <g>
+    <circle cx="100" cy="150" r="1" fill="#ffffff" opacity="0.6">
+      <animate attributeName="cx" values="100;105;100" dur="15s" repeatCount="indefinite" />
+      <animate attributeName="cy" values="150;155;150" dur="15s" repeatCount="indefinite" />
+    </circle>
+    
+    <circle cx="200" cy="170" r="0.8" fill="#ffffff" opacity="0.5">
+      <animate attributeName="cx" values="200;195;200" dur="18s" repeatCount="indefinite" />
+      <animate attributeName="cy" values="170;175;170" dur="18s" repeatCount="indefinite" />
+    </circle>
+    
+    <circle cx="300" cy="160" r="1.2" fill="#ffffff" opacity="0.7">
+      <animate attributeName="cx" values="300;305;300" dur="20s" repeatCount="indefinite" />
+      <animate attributeName="cy" values="160;155;160" dur="20s" repeatCount="indefinite" />
+    </circle>
+  </g>
+  
+  <!-- Titre de la dimension -->
+  <text x="200" y="50" font-family="'Orbitron', sans-serif" font-size="20" fill="#ffffff" text-anchor="middle">Océan Stellaire</text>
+</svg>

@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <!-- Dégradés -->
+    <linearGradient id="skyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0a0a20" />
+      <stop offset="100%" stop-color="#151538" />
+    </linearGradient>
+    
+    <linearGradient id="melodicGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7209b7" />
+      <stop offset="50%" stop-color="#3a0ca3" />
+      <stop offset="100%" stop-color="#4cc9f0" />
+    </linearGradient>
+    
+    <linearGradient id="waveGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7209b7" stop-opacity="0.8" />
+      <stop offset="50%" stop-color="#f72585" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#4cc9f0" stop-opacity="0.8" />
+    </linearGradient>
+    
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+  
+  <!-- Arrière-plan -->
+  <rect width="400" height="300" fill="url(#skyGradient)" />
+  
+  <!-- Paysage de base -->
+  <polygon points="0,220 50,210 100,230 150,220 200,240 250,220 300,230 350,210 400,220 400,300 0,300" fill="#151538" />
+  
+  <!-- Ondes sonores visibles -->
+  <g id="soundWaves" filter="url(#glow)">
+    <!-- Onde sinusoïdale principale -->
+    <path d="M0,150 C50,120 100,180 150,150 C200,120 250,180 300,150 C350,120 400,180 450,150" 
+          fill="none" stroke="url(#melodicGradient)" stroke-width="2" opacity="0.7">
+      <animate attributeName="d" values="M0,150 C50,120 100,180 150,150 C200,120 250,180 300,150 C350,120 400,180 450,150;
+                                        M0,150 C50,180 100,120 150,150 C200,180 250,120 300,150 C350,180 400,120 450,150;
+                                        M0,150 C50,120 100,180 150,150 C200,120 250,180 300,150 C350,120 400,180 450,150" 
+              dur="10s" repeatCount="indefinite" />
+    </path>
+    
+    <!-- Onde harmonique 1 -->
+    <path d="M0,140 C25,125 50,155 75,140 C100,125 125,155 150,140 C175,125 200,155 225,140 C250,125 275,155 300,140 C325,125 350,155 375,140 C400,125 425,155 450,140" 
+          fill="none" stroke="url(#melodicGradient)" stroke-width="1" opacity="0.6">
+      <animate attributeName="d" values="M0,140 C25,125 50,155 75,140 C100,125 125,155 150,140 C175,125 200,155 225,140 C250,125 275,155 300,140 C325,125 350,155 375,140 C400,125 425,155 450,140;
+                                        M0,140 C25,155 50,125 75,140 C100,155 125,125 150,140 C175,155 200,125 225,140 C250,155 275,125 300,140 C325,155 350,125 375,140 C400,155 425,125 450,140;
+                                        M0,140 C25,125 50,155 75,140 C100,125 125,155 150,140 C175,125 200,155 225,140 C250,125 275,155 300,140 C325,125 350,155 375,140 C400,125 425,155 450,140" 
+              dur="7s" repeatCount="indefinite" />
+    </path>
+    
+    <!-- Onde harmonique 2 -->
+    <path d="M0,160 C16.6,145 33.3,175 50,160 C66.6,145 83.3,175 100,160 C116.6,145 133.3,175 150,160 C166.6,145 183.3,175 200,160 C216.6,145 233.3,175 250,160 C266.6,145 283.3,175 300,160 C316.6,145 333.3,175 350,160 C366.6,145 383.3,175 400,160" 
+          fill="none" stroke="url(#melodicGradient)" stroke-width="1" opacity="0.5">
+      <animate attributeName="d" values="M0,160 C16.6,145 33.3,175 50,160 C66.6,145 83.3,175 100,160 C116.6,145 133.3,175 150,160 C166.6,145 183.3,175 200,160 C216.6,145 233.3,175 250,160 C266.6,145 283.3,175 300,160 C316.6,145 333.3,175 350,160 C366.6,145 383.3,175 400,160;
+                                        M0,160 C16.6,175 33.3,145 50,160 C66.6,175 83.3,145 100,160 C116.6,175 133.3,145 150,160 C166.6,175 183.3,145 200,160 C216.6,175 233.3,145 250,160 C266.6,175 283.3,145 300,160 C316.6,175 333.3,145 350,160 C366.6,175 383.3,145 400,160;
+                                        M0,160 C16.6,145 33.3,175 50,160 C66.6,145 83.3,175 100,160 C116.6,145 133.3,175 150,160 C166.6,145 183.3,175 200,160 C216.6,145 233.3,175 250,160 C266.6,145 283.3,175 300,160 C316.6,145 333.3,175 350,160 C366.6,145 383.3,175 400,160" 
+              dur="5s" repeatCount="indefinite" />
+    </path>
+  </g>
+  
+  <!-- Visualisations d'ondes rythmiques -->
+  <g id="rhythmWaves" filter="url(#glow)">
+    <rect x="80" y="120" width="2" height="30" fill="url(#waveGradient)">
+      <animate attributeName="height" values="30;50;30" dur="0.7s" repeatCount="indefinite" />
+    </rect>
+    <rect x="90" y="120" width="2" height="20" fill="url(#waveGradient)">
+      <animate attributeName="height" values="20;45;20" dur="1.3s" repeatCount="indefinite" />
+    </rect>
+    <rect x="100" y="120" width="2" height="40" fill="url(#waveGradient)">
+      <animate attributeName="height" values="40;20;40" dur="0.9s" repeatCount="indefinite" />
+    </rect>
+    <rect x="110" y="120" width="2" height="25" fill="url(#waveGradient)">
+      <animate attributeName="height" values="25;45;25" dur="1.1s" repeatCount="indefinite" />
+    </rect>
+    <rect x="120" y="120" width="2" height="35" fill="url(#waveGradient)">
+      <animate attributeName="height" values="35;15;35" dur="0.8s" repeatCount="indefinite" />
+    </rect>
+    
+    <rect x="280" y="120" width="2" height="25" fill="url(#waveGradient)">
+      <animate attributeName="height" values="25;45;25" dur="1.2s" repeatCount="indefinite" />
+    </rect>
+    <rect x="290" y="120" width="2" height="40" fill="url(#waveGradient)">
+      <animate attributeName="height" values="40;20;40" dur="0.6s" repeatCount="indefinite" />
+    </rect>
+    <rect x="300" y="120" width="2" height="30" fill="url(#waveGradient)">
+      <animate attributeName="height" values="30;50;30" dur="1.4s" repeatCount="indefinite" />
+    </rect>
+    <rect x="310" y="120" width="2" height="35" fill="url(#waveGradient)">
+      <animate attributeName="height" values="35;15;35" dur="1s" repeatCount="indefinite" />
+    </rect>
+    <rect x="320" y="120" width="2" height="20" fill="url(#waveGradient)">
+      <animate attributeName="height" values="20;40;20" dur="0.7s" repeatCount="indefinite" />
+    </rect>
+  </g>
+  
+  <!-- Sphère mélodique centrale -->
+  <g id="melodicSphere" filter="url(#glow)">
+    <circle cx="200" cy="140" r="30" fill="url(#melodicGradient)" opacity="0.6">
+      <animate attributeName="r" values="30;32;30" dur="5s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.6;0.8;0.6" dur="5s" repeatCount="indefinite" />
+    </circle>
+    
+    <!-- Cercles concentriques représentant des harmoniques -->
+    <circle cx="200" cy="140" r="40" fill="none" stroke="url(#melodicGradient)" stroke-width="1" opacity="0.4">
+      <animate attributeName="r" values="40;44;40" dur="7s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.4;0.6;0.4" dur="7s" repeatCount="indefinite" />
+    </circle>
+    
+    <circle cx="200" cy="140" r="50" fill="none" stroke="url(#melodicGradient)" stroke-width="0.8" opacity="0.3">
+      <animate attributeName="r" values="50;55;50" dur="9s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.3;0.5;0.3" dur="9s" repeatCount="indefinite" />
+    </circle>
+    
+    <circle cx="200" cy="140" r="60" fill="none" stroke="url(#melodicGradient)" stroke-width="0.5" opacity="0.2">
+      <animate attributeName="r" values="60;66;60" dur="11s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.2;0.4;0.2" dur="11s" repeatCount="indefinite" />
+    </circle>
+  </g>
+  
+  <!-- Notes de musique flottantes -->
+  <g id="musicalNotes" filter="url(#glow)">
+    <!-- Note de musique 1 - croche -->
+    <g id="note1" transform="translate(150, 90) scale(0.3)">
+      <ellipse cx="0" cy="0" rx="10" ry="7" fill="url(#waveGradient)" transform="rotate(-15)" />
+      <line x1="10" y1="0" x2="10" y2="-30" stroke="url(#waveGradient)" stroke-width="2" />
+      <path d="M10,-30 C20,-30 25,-20 25,-10" fill="none" stroke="url(#waveGradient)" stroke-width="2" />
+      
+      <animateMotion path="M0,0 C10,10 -10,20 0,30 C10,40 -10,30 0,20 C10,10 0,0 0,0" dur="20s" repeatCount="indefinite" />
+      <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="20s" repeatCount="indefinite" additive="sum" />
+    </g>
+    
+    <!-- Note de musique 2 - noire -->
+    <g id="note2" transform="translate(250, 110) scale(0.3)">
+      <ellipse cx="0" cy="0" rx="10" ry="7" fill="url(#waveGradient)" transform="rotate(15)" />
+      <line x1="-10" y1="0" x2="-10" y2="-35" stroke="url(#waveGradient)" stroke-width="2" />
+      
+      <animateMotion path="M0,0 C-10,15 10,30 0,15 C-10,0 10,-15 0,0" dur="15s" repeatCount="indefinite" />
+      <animateTransform attributeName="transform" type="rotate" from="0" to="-360" dur="15s" repeatCount="indefinite" additive="sum" />
+    </g>
+    
+    <!-- Note de musique 3 - double-croche -->
+    <g id="note3" transform="translate(180, 70) scale(0.25)">
+      <ellipse cx="0" cy="0" rx="10" ry="7" fill="url(#waveGradient)" transform="rotate(-10)" />
+      <line x1="10" y1="0" x2="10" y2="-35" stroke="url(#waveGradient)" stroke-width="2" />
+      <path d="M10,-35 C20,-35 25,-25 25,-15" fill="none" stroke="url(#waveGradient)" stroke-width="2" />
+      <path d="M25,-25 C35,-25 40,-15 40,-5" fill="none" stroke="url(#waveGradient)" stroke-width="2" />
+      
+      <animateMotion path="M0,0 C5,10 15,5 10,15 C5,25 -5,20 0,10 C5,0 -5,-10 0,0" dur="25s" repeatCount="indefinite" />
+      <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="25s" repeatCount="indefinite" additive="sum" />
+    </g>
+    
+    <!-- Note de musique 4 - blanche -->
+    <g id="note4" transform="translate(220, 90) scale(0.25)">
+      <ellipse cx="0" cy="0" rx="10" ry="7" fill="none" stroke="url(#waveGradient)" stroke-width="2" transform="rotate(5)" />
+      <line x1="-10" y1="0" x2="-10" y2="-30" stroke="url(#waveGradient)" stroke-width="2" />
+      
+      <animateMotion path="M0,0 C-15,5 -5,15 5,10 C15,5 5,-5 0,0" dur="18s" repeatCount="indefinite" />
+      <animateTransform attributeName="transform" type="rotate" from="0" to="-360" dur="18s" repeatCount="indefinite" additive="sum" />
+    </g>
+  </g>
+  
+  <!-- Clés de sol stylisées -->
+  <g id="trebleClef1" transform="translate(130, 160) scale(0.15)" opacity="0.7" filter="url(#glow)">
+    <path d="M10,80 C-10,40 25,0 50,20 C75,40 65,70 50,80 C35,90 25,85 25,70 C25,55 35,50 45,55 C55,60 55,75 45,80 L45,135 C45,140 50,145 60,145 S75,140 75,135 L75,125 C75,120 70,115 60,115 S45,120 45,125 L45,200 C45,210 35,220 20,220 S-5,210 -5,200 L-5,140 C-5,110 5,80 30,60 L10,10 C-5,-20 10,-40 30,-30 C50,-20 45,0 30,0 C15,0 10,-10 10,-20" 
+          fill="none" stroke="url(#waveGradient)" stroke-width="6" />
+    
+    <animateTransform attributeName="transform" type="rotate" from="-10" to="10" dur="10s" repeatCount="indefinite" additive="sum" />
+  </g>
+  
+  <g id="trebleClef2" transform="translate(270, 160) scale(0.15)" opacity="0.7" filter="url(#glow)">
+    <path d="M10,80 C-10,40 25,0 50,20 C75,40 65,70 50,80 C35,90 25,85 25,70 C25,55 35,50 45,55 C55,60 55,75 45,80 L45,135 C45,140 50,145 60,145 S75,140 75,135 L75,125 C75,120 70,115 60,115 S45,120 45,125 L45,200 C45,210 35,220 20,220 S-5,210 -5,200 L-5,140 C-5,110 5,80 30,60 L10,10 C-5,-20 10,-40 30,-30 C50,-20 45,0 30,0 C15,0 10,-10 10,-20" 
+          fill="none" stroke="url(#waveGradient)" stroke-width="6" />
+    
+    <animateTransform attributeName="transform" type="rotate" from="10" to="-10" dur="12s" repeatCount="indefinite" additive="sum" />
+  </g>
+  
+  <!-- Petites particules lumineuses -->
+  <g id="particles" filter="url(#glow)">
+    <circle cx="120" cy="100" r="1" fill="#ffffff" opacity="0.8">
+      <animate attributeName="opacity" values="0.5;1;0.5" dur="3s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="180" cy="120" r="1" fill="#ffffff" opacity="0.8">
+      <animate attributeName="opacity" values="0.5;1;0.5" dur="4s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="220" cy="140" r="1" fill="#ffffff" opacity="0.8">
+      <animate attributeName="opacity" values="0.5;1;0.5" dur="5s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="280" cy="100" r="1" fill="#ffffff" opacity="0.8">
+      <animate attributeName="opacity" values="0.5;1;0.5" dur="6s" repeatCount="indefinite" />
+    </circle>
+  </g>
+  
+  <!-- Étoiles lointaines -->
+  <g id="stars" fill="#ffffff" opacity="0.7">
+    <circle cx="50" cy="50" r="1" />
+    <circle cx="100" cy="30" r="1" />
+    <circle cx="150" cy="60" r="1" />
+    <circle cx="200" cy="40" r="1" />
+    <circle cx="250" cy="70" r="1" />
+    <circle cx="300" cy="50" r="1" />
+    <circle cx="350" cy="30" r="1" />
+    <circle cx="380" cy="70" r="1" />
+  </g>
+</svg>

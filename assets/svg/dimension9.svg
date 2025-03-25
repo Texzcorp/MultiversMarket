@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <!-- Dégradés -->
+    <linearGradient id="skyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0a0a20" />
+      <stop offset="100%" stop-color="#151538" />
+    </linearGradient>
+    
+    <linearGradient id="magneticGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6e00ff" stop-opacity="0.7" />
+      <stop offset="50%" stop-color="#9d4edd" stop-opacity="0.5" />
+      <stop offset="100%" stop-color="#00f2ff" stop-opacity="0.7" />
+    </linearGradient>
+    
+    <radialGradient id="pulseGlow" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="1" />
+      <stop offset="40%" stop-color="#9d4edd" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#6e00ff" stop-opacity="0" />
+    </radialGradient>
+    
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    
+    <!-- Animation pour les lignes de champ magnétique -->
+    <animate xlink:href="#magneticField1" attributeName="d" 
+             values="M50,150 C100,100 150,100 200,150 C250,200 300,200 350,150;
+                     M50,150 C100,200 150,200 200,150 C250,100 300,100 350,150;
+                     M50,150 C100,100 150,100 200,150 C250,200 300,200 350,150" 
+             dur="10s" repeatCount="indefinite" />
+             
+    <animate xlink:href="#magneticField2" attributeName="d" 
+             values="M50,120 C100,70 150,70 200,120 C250,170 300,170 350,120;
+                     M50,120 C100,170 150,170 200,120 C250,70 300,70 350,120;
+                     M50,120 C100,70 150,70 200,120 C250,170 300,170 350,120" 
+             dur="12s" repeatCount="indefinite" />
+             
+    <animate xlink:href="#magneticField3" attributeName="d" 
+             values="M50,180 C100,130 150,130 200,180 C250,230 300,230 350,180;
+                     M50,180 C100,230 150,230 200,180 C250,130 300,130 350,180;
+                     M50,180 C100,130 150,130 200,180 C250,230 300,230 350,180" 
+             dur="14s" repeatCount="indefinite" />
+             
+    <!-- Animation pour les pulsations -->
+    <animate xlink:href="#pulse1" attributeName="r" values="0;50;0" dur="5s" repeatCount="indefinite" />
+    <animate xlink:href="#pulse2" attributeName="r" values="0;40;0" dur="4s" repeatCount="indefinite" begin="1s" />
+    <animate xlink:href="#pulse3" attributeName="r" values="0;30;0" dur="3s" repeatCount="indefinite" begin="2s" />
+  </defs>
+  
+  <!-- Arrière-plan -->
+  <rect width="400" height="300" fill="url(#skyGradient)" />
+  
+  <!-- Lignes de champ magnétique -->
+  <g opacity="0.7">
+    <path id="magneticField1" d="M50,150 C100,100 150,100 200,150 C250,200 300,200 350,150" fill="none" stroke="url(#magneticGradient)" stroke-width="2" />
+    <path id="magneticField2" d="M50,120 C100,70 150,70 200,120 C250,170 300,170 350,120" fill="none" stroke="url(#magneticGradient)" stroke-width="2" />
+    <path id="magneticField3" d="M50,180 C100,130 150,130 200,180 C250,230 300,230 350,180" fill="none" stroke="url(#magneticGradient)" stroke-width="2" />
+  </g>
+  
+  <!-- Pôles magnétiques -->
+  <g filter="url(#glow)">
+    <!-- Pôle Nord -->
+    <circle cx="100" cy="150" r="15" fill="#6e00ff" opacity="0.9">
+      <animate attributeName="r" values="15;17;15" dur="3s" repeatCount="indefinite" />
+    </circle>
+    
+    <!-- Pôle Sud -->
+    <circle cx="300" cy="150" r="15" fill="#00f2ff" opacity="0.9">
+      <animate attributeName="r" values="15;17;15" dur="3s" repeatCount="indefinite" />
+    </circle>
+  </g>
+  
+  <!-- Particules magnétiques -->
+  <g>
+    <!-- Particules autour du pôle Nord -->
+    <circle cx="85" cy="135" r="2" fill="#ffffff" opacity="0.8">
+      <animateTransform attributeName="transform" type="rotate" from="0 100 150" to="360 100 150" dur="5s" repeatCount="indefinite" />
+    </circle>
+    
+    <circle cx="90" cy="165" r="1.5" fill="#ffffff" opacity="0.7">
+      <animateTransform attributeName="transform" type="rotate" from="90 100 150" to="450 100 150" dur="6s" repeatCount="indefinite" />
+    </circle>
+    
+    <circle cx="115" cy="140" r="1" fill="#ffffff" opacity="0.6">
+      <animateTransform attributeName="transform" type="rotate" from="180 100 150" to="540 100 150" dur="7s" repeatCount="indefinite" />
+    </circle>
+    
+    <!-- Particules autour du pôle Sud -->
+    <circle cx="285" cy="135" r="2" fill="#ffffff" opacity="0.8">
+      <animateTransform attributeName="transform" type="rotate" from="0 300 150" to="360 300 150" dur="5s" repeatCount="indefinite" />
+    </circle>
+    
+    <circle cx="290" cy="165" r="1.5" fill="#ffffff" opacity="0.7">
+      <animateTransform attributeName="transform" type="rotate" from="90 300 150" to="450 300 150" dur="6s" repeatCount="indefinite" />
+    </circle>
+    
+    <circle cx="315" cy="140" r="1" fill="#ffffff" opacity="0.6">
+      <animateTransform attributeName="transform" type="rotate" from="180 300 150" to="540 300 150" dur="7s" repeatCount="indefinite" />
+    </circle>
+  </g>
+  
+  <!-- Pulsations magnétiques -->
+  <g opacity="0.5">
+    <circle id="pulse1" cx="200" cy="150" r="0" fill="none" stroke="#6e00ff" stroke-width="2" />
+    <circle id="pulse2" cx="200" cy="150" r="0" fill="none" stroke="#9d4edd" stroke-width="1.5" />
+    <circle id="pulse3" cx="200" cy="150" r="0" fill="none" stroke="#00f2ff" stroke-width="1" />
+  </g>
+  
+  <!-- Formations rocheuses magnétiques -->
+  <g>
+    <!-- Formations à gauche -->
+    <path d="M70,220 L80,180 L90,210 L100,190 L110,230 Z" fill="#151538" stroke="#6e00ff" stroke-width="1" opacity="0.8" />
+    <path d="M130,230 L140,200 L150,220 L160,190 L170,240 Z" fill="#151538" stroke="#9d4edd" stroke-width="1" opacity="0.8" />
+    
+    <!-- Formations à droite -->
+    <path d="M230,240 L240,200 L250,230 L260,190 L270,220 Z" fill="#151538" stroke="#9d4edd" stroke-width="1" opacity="0.8" />
+    <path d="M290,230 L300,190 L310,220 L320,200 L330,240 Z" fill="#151538" stroke="#00f2ff" stroke-width="1" opacity="0.8" />
+  </g>
+  
+  <!-- Particules en suspension -->
+  <g>
+    <circle cx="150" cy="100" r="1" fill="#ffffff" opacity="0.8">
+      <animate attributeName="cy" values="100;90;100" dur="8s" repeatCount="indefinite" />
+    </circle>
+    
+    <circle cx="180" cy="120" r="0.8" fill="#ffffff" opacity="0.7">
+      <animate attributeName="cy" values="120;110;120" dur="10s" repeatCount="indefinite" />
+    </circle>
+    
+    <circle cx="220" cy="110" r="1.2" fill="#ffffff" opacity="0.8">
+      <animate attributeName="cy" values="110;100;110" dur="9s" repeatCount="indefinite" />
+    </circle>
+    
+    <circle cx="250" cy="90" r="0.9" fill="#ffffff" opacity="0.7">
+      <animate attributeName="cy" values="90;80;90" dur="11s" repeatCount="indefinite" />
+    </circle>
+  </g>
+  
+  <!-- Éclairs magnétiques -->
+  <g>
+    <path d="M120,150 L140,140 L130,160 L150,155" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.8">
+      <animate attributeName="opacity" values="0;0.8;0" dur="2s" repeatCount="indefinite" />
+    </path>
+    
+    <path d="M280,150 L260,140 L270,160 L250,155" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.8">
+      <animate attributeName="opacity" values="0;0.8;0" dur="2.5s" repeatCount="indefinite" begin="1s" />
+    </path>
+    
+    <path d="M200,130 L190,110 L210,120 L200,100" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.8">
+      <animate attributeName="opacity" values="0;0.8;0" dur="3s" repeatCount="indefinite" begin="0.5s" />
+    </path>
+  </g>
+  
+  <!-- Titre de la dimension -->
+  <text x="200" y="50" font-family="'Orbitron', sans-serif" font-size="20" fill="#ffffff" text-anchor="middle">Pulse Magnétique</text>
+</svg>

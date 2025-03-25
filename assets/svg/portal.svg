@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="500" height="500" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <!-- Dégradés -->
+    <linearGradient id="portalGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6e00ff" />
+      <stop offset="50%" stop-color="#9d4edd" />
+      <stop offset="100%" stop-color="#00f2ff" />
+    </linearGradient>
+    
+    <radialGradient id="centerGlow" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9" />
+      <stop offset="40%" stop-color="#9d4edd" stop-opacity="0.6" />
+      <stop offset="100%" stop-color="#00f2ff" stop-opacity="0" />
+    </radialGradient>
+    
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="10" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    
+    <!-- Animation de rotation -->
+    <animateTransform 
+      xlink:href="#outerRing"
+      attributeName="transform"
+      attributeType="XML"
+      type="rotate"
+      from="0 250 250"
+      to="360 250 250"
+      dur="30s"
+      repeatCount="indefinite" />
+    
+    <animateTransform 
+      xlink:href="#middleRing"
+      attributeName="transform"
+      attributeType="XML"
+      type="rotate"
+      from="360 250 250"
+      to="0 250 250"
+      dur="20s"
+      repeatCount="indefinite" />
+      
+    <animateTransform 
+      xlink:href="#innerRing"
+      attributeName="transform"
+      attributeType="XML"
+      type="rotate"
+      from="0 250 250"
+      to="360 250 250"
+      dur="15s"
+      repeatCount="indefinite" />
+      
+    <!-- Animation de pulsation -->
+    <animate 
+      xlink:href="#centerGlowCircle"
+      attributeName="r"
+      values="80;90;80"
+      dur="4s"
+      repeatCount="indefinite" />
+  </defs>
+  
+  <!-- Fond subtil -->
+  <circle cx="250" cy="250" r="240" fill="#0a0a20" opacity="0.3" />
+  
+  <!-- Anneaux du portail -->
+  <g id="portalRings">
+    <circle id="outerRing" cx="250" cy="250" r="230" fill="none" stroke="url(#portalGradient)" stroke-width="3" stroke-dasharray="1, 10" />
+    
+    <g id="outerSymbols">
+      <circle cx="250" cy="20" r="6" fill="#00f2ff" />
+      <circle cx="480" cy="250" r="6" fill="#00f2ff" />
+      <circle cx="250" cy="480" r="6" fill="#00f2ff" />
+      <circle cx="20" cy="250" r="6" fill="#00f2ff" />
+      
+      <circle cx="365" cy="135" r="6" fill="#9d4edd" />
+      <circle cx="365" cy="365" r="6" fill="#9d4edd" />
+      <circle cx="135" cy="365" r="6" fill="#9d4edd" />
+      <circle cx="135" cy="135" r="6" fill="#9d4edd" />
+    </g>
+    
+    <circle id="middleRing" cx="250" cy="250" r="180" fill="none" stroke="url(#portalGradient)" stroke-width="2" stroke-dasharray="5, 5" />
+    
+    <g id="middleSymbols">
+      <path d="M250,70 L260,90 L240,90 Z" fill="#6e00ff" />
+      <path d="M430,250 L410,260 L410,240 Z" fill="#6e00ff" />
+      <path d="M250,430 L240,410 L260,410 Z" fill="#6e00ff" />
+      <path d="M70,250 L90,240 L90,260 Z" fill="#6e00ff" />
+    </g>
+    
+    <circle id="innerRing" cx="250" cy="250" r="130" fill="none" stroke="url(#portalGradient)" stroke-width="4" />
+  </g>
+  
+  <!-- Cercle central brillant -->
+  <circle id="centerGlowCircle" cx="250" cy="250" r="80" fill="url(#centerGlow)" filter="url(#glow)" />
+  
+  <!-- Symboles sacrés géométriques -->
+  <g id="geometricSymbols" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.6">
+    <path d="M250,170 L310,265 L190,265 Z" />
+    <circle cx="250" cy="250" r="40" />
+    <rect x="220" y="220" width="60" height="60" />
+  </g>
+  
+  <!-- Particules flottantes -->
+  <g id="particles">
+    <circle cx="230" cy="240" r="2" fill="#ffffff">
+      <animate attributeName="cx" values="230;265;230" dur="7s" repeatCount="indefinite" />
+      <animate attributeName="cy" values="240;230;240" dur="7s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="270" cy="260" r="2" fill="#ffffff">
+      <animate attributeName="cx" values="270;235;270" dur="8s" repeatCount="indefinite" />
+      <animate attributeName="cy" values="260;270;260" dur="8s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="250" cy="230" r="2" fill="#ffffff">
+      <animate attributeName="cx" values="250;260;250" dur="5s" repeatCount="indefinite" />
+      <animate attributeName="cy" values="230;260;230" dur="5s" repeatCount="indefinite" />
+    </circle>
+  </g>
+  
+  <!-- Rayons lumineux depuis le centre -->
+  <g id="rays" stroke="url(#portalGradient)" stroke-width="1" opacity="0.5">
+    <line x1="250" y1="250" x2="400" y2="100">
+      <animate attributeName="x2" values="400;380;400" dur="3s" repeatCount="indefinite" />
+      <animate attributeName="y2" values="100;120;100" dur="3s" repeatCount="indefinite" />
+    </line>
+    <line x1="250" y1="250" x2="400" y2="400">
+      <animate attributeName="x2" values="400;380;400" dur="4s" repeatCount="indefinite" />
+      <animate attributeName="y2" values="400;380;400" dur="4s" repeatCount="indefinite" />
+    </line>
+    <line x1="250" y1="250" x2="100" y2="400">
+      <animate attributeName="x2" values="100;120;100" dur="5s" repeatCount="indefinite" />
+      <animate attributeName="y2" values="400;380;400" dur="5s" repeatCount="indefinite" />
+    </line>
+    <line x1="250" y1="250" x2="100" y2="100">
+      <animate attributeName="x2" values="100;120;100" dur="6s" repeatCount="indefinite" />
+      <animate attributeName="y2" values="100;120;100" dur="6s" repeatCount="indefinite" />
+    </line>
+  </g>
+</svg>

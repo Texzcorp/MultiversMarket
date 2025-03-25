@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <!-- Dégradés -->
+    <linearGradient id="skyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0a0a20" />
+      <stop offset="100%" stop-color="#151538" />
+    </linearGradient>
+    
+    <linearGradient id="fractalGradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6e00ff" />
+      <stop offset="100%" stop-color="#00f2ff" />
+    </linearGradient>
+    
+    <linearGradient id="fractalGradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#9d4edd" />
+      <stop offset="100%" stop-color="#6e00ff" />
+    </linearGradient>
+    
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+  
+  <!-- Arrière-plan -->
+  <rect width="400" height="300" fill="url(#skyGradient)" />
+  
+  <!-- Paysage fractal de base -->
+  <polygon points="0,220 50,210 100,230 150,220 200,240 250,220 300,230 350,210 400,220 400,300 0,300" fill="#151538" />
+  
+  <!-- Champs gravitationnels visibles -->
+  <g id="gravityFields" filter="url(#glow)">
+    <!-- Champ 1 - grande spirale logarithmique -->
+    <path d="M200,150 C240,150 250,120 220,100 C190,80 160,100 150,130 C140,160 160,180 190,185 C220,190 235,175 230,155" 
+          fill="none" stroke="url(#fractalGradient1)" stroke-width="2" opacity="0.6">
+      <animateTransform attributeName="transform" type="rotate" from="0 200 150" to="360 200 150" dur="45s" repeatCount="indefinite" />
+    </path>
+    
+    <!-- Champ 2 - motif fractal triangulaire -->
+    <path d="M120,180 L200,100 L280,180 Z" fill="none" stroke="url(#fractalGradient2)" stroke-width="1.5" opacity="0.5">
+      <animate attributeName="d" values="M120,180 L200,100 L280,180 Z;
+                                        M110,185 L200,90 L290,185 Z;
+                                        M120,180 L200,100 L280,180 Z" 
+              dur="20s" repeatCount="indefinite" />
+    </path>
+    
+    <path d="M160,140 L200,100 L240,140 Z" fill="none" stroke="url(#fractalGradient2)" stroke-width="1" opacity="0.6">
+      <animate attributeName="d" values="M160,140 L200,100 L240,140 Z;
+                                        M150,135 L200,90 L250,135 Z;
+                                        M160,140 L200,100 L240,140 Z" 
+              dur="15s" repeatCount="indefinite" />
+    </path>
+    
+    <path d="M120,180 L160,140 L200,180 Z" fill="none" stroke="url(#fractalGradient2)" stroke-width="1" opacity="0.6">
+      <animate attributeName="d" values="M120,180 L160,140 L200,180 Z;
+                                        M110,185 L150,135 L200,185 Z;
+                                        M120,180 L160,140 L200,180 Z" 
+              dur="18s" repeatCount="indefinite" />
+    </path>
+    
+    <path d="M200,180 L240,140 L280,180 Z" fill="none" stroke="url(#fractalGradient2)" stroke-width="1" opacity="0.6">
+      <animate attributeName="d" values="M200,180 L240,140 L280,180 Z;
+                                        M200,185 L250,135 L290,185 Z;
+                                        M200,180 L240,140 L280,180 Z" 
+              dur="17s" repeatCount="indefinite" />
+    </path>
+  </g>
+  
+  <!-- Objets flottants affectés par la gravité fractale -->
+  <g id="floatingObjects">
+    <!-- Rocher 1 - suivant un motif fractal -->
+    <path d="M150,120 L160,110 L170,115 L175,105 L185,110 L180,120 Z" fill="#6e00ff" opacity="0.7" filter="url(#glow)">
+      <animateMotion path="M0,0 C20,10 -10,20 20,30 C0,40 10,20 -10,10 C0,0 -5,10 0,0" dur="25s" repeatCount="indefinite" />
+      <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="25s" repeatCount="indefinite" />
+    </path>
+    
+    <!-- Rocher 2 - suivant un motif fractal différent -->
+    <path d="M250,140 L260,135 L265,145 L270,135 L275,140 L265,150 Z" fill="#00f2ff" opacity="0.7" filter="url(#glow)">
+      <animateMotion path="M0,0 C-15,15 15,30 -20,20 C0,10 -10,30 10,20 C5,10 -5,5 0,0" dur="30s" repeatCount="indefinite" />
+      <animateTransform attributeName="transform" type="rotate" from="0" to="-360" dur="30s" repeatCount="indefinite" />
+    </path>
+    
+    <!-- Sphère 1 -->
+    <circle cx="180" cy="150" r="5" fill="url(#fractalGradient1)" opacity="0.8" filter="url(#glow)">
+      <animateMotion path="M0,0 C30,0 30,30 0,30 C-30,30 -30,0 0,0" dur="15s" repeatCount="indefinite" />
+    </circle>
+    
+    <!-- Sphère 2 -->
+    <circle cx="220" cy="130" r="3" fill="url(#fractalGradient2)" opacity="0.8" filter="url(#glow)">
+      <animateMotion path="M0,0 C-20,10 -10,30 10,20 C30,10 20,-10 0,0" dur="20s" repeatCount="indefinite" />
+    </circle>
+  </g>
+  
+  <!-- Lignes de champ gravitationnel en arrière-plan -->
+  <g id="backgroundFields" opacity="0.3">
+    <!-- Différents motifs fractals -->
+    <path d="M100,200 C150,180 200,220 250,180 C300,220 350,180 400,200" fill="none" stroke="url(#fractalGradient1)" stroke-width="0.5">
+      <animate attributeName="d" values="M100,200 C150,180 200,220 250,180 C300,220 350,180 400,200;
+                                        M100,205 C150,175 200,225 250,175 C300,225 350,175 400,205;
+                                        M100,200 C150,180 200,220 250,180 C300,220 350,180 400,200" 
+              dur="30s" repeatCount="indefinite" />
+    </path>
+    
+    <path d="M100,180 C150,220 200,180 250,220 C300,180 350,220 400,180" fill="none" stroke="url(#fractalGradient2)" stroke-width="0.5">
+      <animate attributeName="d" values="M100,180 C150,220 200,180 250,220 C300,180 350,220 400,180;
+                                        M100,175 C150,225 200,175 250,225 C300,175 350,225 400,175;
+                                        M100,180 C150,220 200,180 250,220 C300,180 350,220 400,180" 
+              dur="35s" repeatCount="indefinite" />
+    </path>
+  </g>
+  
+  <!-- Motif fractal de Koch -->
+  <g id="kochSnowflake" transform="translate(200, 70) scale(0.4)" opacity="0.7" filter="url(#glow)">
+    <path d="M0,0 L30,0 L15,-26 Z" fill="none" stroke="url(#fractalGradient1)" stroke-width="1">
+      <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="40s" repeatCount="indefinite" />
+    </path>
+    
+    <path d="M0,0 L10,0 L5,-8.7 Z" fill="none" stroke="url(#fractalGradient1)" stroke-width="1" transform="translate(0,0)">
+      <animateTransform attributeName="transform" type="rotate" from="0" to="-360" dur="20s" repeatCount="indefinite" />
+    </path>
+    
+    <path d="M0,0 L10,0 L5,-8.7 Z" fill="none" stroke="url(#fractalGradient1)" stroke-width="1" transform="translate(20,0)">
+      <animateTransform attributeName="transform" type="rotate" from="0" to="-360" dur="20s" repeatCount="indefinite" />
+    </path>
+    
+    <path d="M0,0 L10,0 L5,-8.7 Z" fill="none" stroke="url(#fractalGradient1)" stroke-width="1" transform="translate(10,-17.3)">
+      <animateTransform attributeName="transform" type="rotate" from="0" to="-360" dur="20s" repeatCount="indefinite" />
+    </path>
+  </g>
+  
+  <!-- Spirale de Fibonacci -->
+  <g id="fibonacciSpiral" transform="translate(310, 90) scale(0.4)" opacity="0.7" filter="url(#glow)">
+    <path d="M0,0 A1,1 0 0,1 1,1 A2,2 0 0,1 -1,3 A3,3 0 0,1 -4,0 A5,5 0 0,1 1,-5 A8,8 0 0,1 9,3 A13,13 0 0,1 -4,16" 
+          fill="none" stroke="url(#fractalGradient2)" stroke-width="1">
+      <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="45s" repeatCount="indefinite" />
+    </path>
+  </g>
+  
+  <!-- Triangle de Sierpinski -->
+  <g id="sierpinskiTriangle" transform="translate(90, 90) scale(0.4)" opacity="0.7" filter="url(#glow)">
+    <path d="M0,0 L60,0 L30,-52 Z M15,-26 L45,-26 L30,-52 Z M30,0 L45,-26 L15,-26 Z" 
+          fill="none" stroke="url(#fractalGradient1)" stroke-width="1">
+      <animateTransform attributeName="transform" type="rotate" from="0" to="-360" dur="50s" repeatCount="indefinite" />
+    </path>
+  </g>
+  
+  <!-- Particules flottantes -->
+  <g id="particles">
+    <circle cx="150" cy="100" r="1" fill="#ffffff" opacity="0.8">
+      <animate attributeName="opacity" values="0.5;1;0.5" dur="3s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="250" cy="120" r="1" fill="#ffffff" opacity="0.8">
+      <animate attributeName="opacity" values="0.5;1;0.5" dur="4s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="200" cy="150" r="1" fill="#ffffff" opacity="0.8">
+      <animate attributeName="opacity" values="0.5;1;0.5" dur="5s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="100" cy="170" r="1" fill="#ffffff" opacity="0.8">
+      <animate attributeName="opacity" values="0.5;1;0.5" dur="6s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="300" cy="160" r="1" fill="#ffffff" opacity="0.8">
+      <animate attributeName="opacity" values="0.5;1;0.5" dur="7s" repeatCount="indefinite" />
+    </circle>
+  </g>
+  
+  <!-- Étoiles lointaines -->
+  <g id="stars" fill="#ffffff" opacity="0.7">
+    <circle cx="50" cy="50" r="1" />
+    <circle cx="100" cy="30" r="1" />
+    <circle cx="150" cy="60" r="1" />
+    <circle cx="200" cy="40" r="1" />
+    <circle cx="250" cy="70" r="1" />
+    <circle cx="300" cy="50" r="1" />
+    <circle cx="350" cy="30" r="1" />
+    <circle cx="380" cy="70" r="1" />
+  </g>
+</svg>
