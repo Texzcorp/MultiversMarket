@@ -2,7 +2,7 @@
 
 ## Invest in Dimensional Real Estate
 
-![MultiversMarket](https://texzcorp.github.io/MultiversMarket/index.html)
+[Visit MultiversMarket](https://texzcorp.github.io/MultiversMarket/index.html)
 
 MultiversMarket is the first interdimensional marketplace allowing users to explore, acquire, and shape parallel realities. This project presents a creative and immersive concept where users can discover and own their own alternative dimensions.
 
