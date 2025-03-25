@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120" fill="none">
+  <circle cx="60" cy="60" r="45" stroke="#00FF88" stroke-width="1" stroke-dasharray="2 2" fill="none">
+    <animate attributeName="r" values="45;48;45" dur="8s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.2;0.8;0.2" dur="8s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="60" cy="60" r="35" stroke="#00FF88" stroke-width="2" fill="none"/>
+  
+  <!-- Planet features -->
+  <path d="M45 50 Q 60 35, 75 50 Q 90 65, 75 80 Q 60 95, 45 80 Q 30 65, 45 50Z" fill="url(#create-gradient)" opacity="0.6"/>
+  <path d="M45 50 Q 60 35, 75 50 Q 90 65, 75 80 Q 60 95, 45 80 Q 30 65, 45 50Z" stroke="#00FF88" stroke-width="1.5" fill="none"/>
+  
+  <!-- Creation wand -->
+  <line x1="85" y1="35" x2="65" y2="55" stroke="#ffffff" stroke-width="2"/>
+  <circle cx="85" cy="35" r="5" fill="#00FF88"/>
+  <circle cx="85" cy="35" r="8" stroke="#00FF88" stroke-width="1" fill="none">
+    <animate attributeName="r" values="8;12;8" dur="3s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="1;0.2;1" dur="3s" repeatCount="indefinite"/>
+  </circle>
+  
+  <defs>
+    <radialGradient id="create-gradient" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(60 60) rotate(90) scale(30)">
+      <stop stop-color="#00FF88"/>
+      <stop offset="1" stop-color="#00FF88" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+</svg>

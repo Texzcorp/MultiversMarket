@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120" fill="none">
+  <circle cx="60" cy="60" r="40" stroke="#00E5FF" stroke-width="3" fill="none"/>
+  <circle cx="60" cy="60" r="55" stroke="#00E5FF" stroke-width="1" stroke-dasharray="5 5" fill="none">
+    <animate attributeName="r" values="55;60;55" dur="5s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.4;0.9;0.4" dur="5s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="60" cy="60" r="20" fill="url(#discover-gradient)" opacity="0.7"/>
+  <path d="M68 52L58 68L52 58L68 52Z" fill="#00E5FF" stroke="#ffffff" stroke-width="2"/>
+  <circle cx="60" cy="60" r="3" fill="#ffffff"/>
+  <defs>
+    <radialGradient id="discover-gradient" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(60 60) rotate(90) scale(20)">
+      <stop stop-color="#00E5FF"/>
+      <stop offset="1" stop-color="#00E5FF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+</svg>

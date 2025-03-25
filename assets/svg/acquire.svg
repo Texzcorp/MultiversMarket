@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120" fill="none">
+  <rect x="30" y="30" width="60" height="60" rx="5" stroke="#ff00ff" stroke-width="3" fill="none"/>
+  <rect x="40" y="40" width="40" height="40" rx="3" fill="url(#acquire-gradient)" opacity="0.7"/>
+  <path d="M60 30V20M60 100V90M30 60H20M100 60H90" stroke="#ff00ff" stroke-width="2"/>
+  <path d="M55 50V70H65V50H55Z" fill="#ff00ff" stroke="#ffffff" stroke-width="1.5"/>
+  <circle cx="60" cy="40" r="3" fill="#ffffff"/>
+  <defs>
+    <radialGradient id="acquire-gradient" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(60 60) rotate(90) scale(40)">
+      <stop stop-color="#ff00ff"/>
+      <stop offset="1" stop-color="#ff00ff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+</svg>
