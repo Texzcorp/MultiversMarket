@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
     loadRelatedDimensions(dimension);
     
     // Add event listener for the purchase button
-    const addToCartBtn = document.querySelector('.add-to-cart');
+    const addToCartBtn = document.querySelector('.add-to-cart-btn');
     if (addToCartBtn) {
         addToCartBtn.addEventListener('click', function() {
             window.multiversMarket.addToCart(dimension.id);
@@ -116,7 +116,7 @@ function displayDimensionDetails(dimension) {
     document.title = `${dimension.name} | MultiversMarket`;
     
     // Update image
-    const imageContainer = document.querySelector('.dimension-detail-image');
+    const imageContainer = document.querySelector('.dimension-visual');
     if (imageContainer) {
         imageContainer.innerHTML = `<object data="${dimension.image}" type="image/svg+xml"></object>`;
     }
@@ -125,18 +125,119 @@ function displayDimensionDetails(dimension) {
     const titleEl = document.querySelector('.dimension-title');
     if (titleEl) titleEl.textContent = dimension.name;
     
-    const categoryEl = document.querySelector('.dimension-category');
-    if (categoryEl) categoryEl.textContent = dimension.category;
+    // Update dimension ID
+    const idEl = document.querySelector('.dimension-id');
+    if (idEl) idEl.textContent = `#${dimension.id}`;
     
-    const priceEl = document.querySelector('.dimension-price');
-    if (priceEl) priceEl.textContent = dimension.price;
+    // Update dimension type, stability, and discovery info
+    const typeEl = document.querySelector('.dimension-type .value');
+    if (typeEl) typeEl.textContent = dimension.category || 'Unknown';
     
-    const descriptionEl = document.querySelector('.dimension-description');
-    if (descriptionEl) {
-        // Create a detailed paragraph from the short description
-        const detailedDescription = createDetailedDescription(dimension);
-        descriptionEl.innerHTML = detailedDescription;
+    // Update stability info
+    const stabilityEl = document.querySelector('.dimension-stability .value');
+    if (stabilityEl) {
+        // Determine stability based on category
+        let stability = 'Unknown';
+        switch (dimension.category) {
+            case 'Harmonic':
+                stability = 'Extremely Stable (98%)';
+                break;
+            case 'Energetic':
+                stability = 'Fluctuating (76%)';
+                break;
+            case 'Biological':
+                stability = 'Stable (85%)';
+                break;
+            case 'Altered Physics':
+                stability = 'Variable (62%)';
+                break;
+            case 'Temporal':
+                stability = 'Unstable (45%)';
+                break;
+            default:
+                stability = 'Moderate (70%)';
+        }
+        stabilityEl.textContent = stability;
     }
+    
+    // Update discovery info
+    const discoveryEl = document.querySelector('.dimension-discovery .value');
+    if (discoveryEl) {
+        // Generate a discovery date based on the dimension ID
+        const currentYear = new Date().getFullYear();
+        const discoveryYear = currentYear - (dimension.id * 3 + 5);
+        const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+        const month = months[dimension.id % 12];
+        discoveryEl.textContent = `${month} ${discoveryYear}`;
+    }
+    
+    // Update price
+    const priceEl = document.querySelector('.amount');
+    if (priceEl) {
+        // Extract numeric value from price string (e.g., "19.2 ETH" -> "19.2")
+        const priceValue = dimension.price.split(' ')[0];
+        priceEl.textContent = priceValue;
+    }
+    
+    // Update currency symbol if ETH
+    const currencyEl = document.querySelector('.currency');
+    if (currencyEl && dimension.price.includes('ETH')) {
+        currencyEl.textContent = 'ETH';
+    }
+    
+    // Update description
+    const descriptionEl = document.querySelector('.dimension-description p');
+    if (descriptionEl) {
+        descriptionEl.textContent = dimension.description;
+    }
+    
+    // Update features list
+    const featuresList = document.querySelector('.features-list');
+    if (featuresList) {
+        // Create a detailed description from the short description
+        const detailedDescription = createDetailedDescription(dimension);
+        
+        // Extract features from the detailed description
+        const features = extractFeatures(dimension, detailedDescription);
+        
+        // Clear loading message
+        featuresList.innerHTML = '';
+        
+        // Add features
+        features.forEach(feature => {
+            const li = document.createElement('li');
+            li.textContent = feature;
+            featuresList.appendChild(li);
+        });
+    }
+    
+    // Update add to cart button
+    const addToCartBtn = document.querySelector('.add-to-cart-btn');
+    if (addToCartBtn) {
+        addToCartBtn.setAttribute('data-dimension-id', dimension.id);
+    }
+}
+
+// Extract features from the detailed description
+function extractFeatures(dimension, detailedDescription) {
+    // Simple extraction of key points from the detailed description
+    const features = [];
+    
+    // Add category-specific feature
+    features.push(`${dimension.category} dimension with unique properties`);
+    
+    // Add more features based on keywords in the description
+    const keywords = extractKeywords(dimension.description);
+    if (keywords.length > 0) {
+        features.push(`Contains elements of: ${keywords.join(', ')}`);
+    }
+    
+    // Add generic features
+    features.push('Safe for human exploration');
+    features.push('Fully mapped and catalogued');
+    features.push('24/7 interdimensional support');
+    
+    return features;
 }
 
 // Create a detailed description from the short description
@@ -230,7 +331,7 @@ function loadRelatedDimensions(currentDimension) {
     );
     
     const relatedDimensions = allDimensions
-        .filter(dim => dim.id !== currentDimension.id) // Exclude current dimension
+        .filter(dim => dim && dim.id !== currentDimension.id) // Exclude current dimension
         .filter(dim => 
             dim.category === currentDimension.category || // Same category
             hasCommonKeywords(dim.description, currentDimension.description) // Or common keywords
@@ -238,12 +339,12 @@ function loadRelatedDimensions(currentDimension) {
         .slice(0, 3); // Limit to 3 similar dimensions
     
     // Display similar dimensions
-    const relatedGrid = document.querySelector('.related-grid');
+    const relatedGrid = document.querySelector('.related-dimensions-grid');
     if (relatedGrid && relatedDimensions.length > 0) {
         relatedGrid.innerHTML = '';
         
         relatedDimensions.forEach(dimension => {
-            const card = window.multiversMarket.createDimensionCard(dimension);
+            const card = createRelatedDimensionCard(dimension);
             relatedGrid.appendChild(card);
         });
     } else if (relatedGrid) {
@@ -253,6 +354,61 @@ function loadRelatedDimensions(currentDimension) {
             relatedSection.style.display = 'none';
         }
     }
+}
+
+// Create a card for a related dimension
+function createRelatedDimensionCard(dimension) {
+    const card = document.createElement('div');
+    card.className = 'related-dimension-card';
+    
+    // Create image container
+    const imageContainer = document.createElement('div');
+    imageContainer.className = 'related-dimension-image';
+    imageContainer.innerHTML = `<object data="${dimension.image}" type="image/svg+xml"></object>`;
+    
+    // Create content container
+    const contentContainer = document.createElement('div');
+    contentContainer.className = 'related-dimension-content';
+    
+    // Create title
+    const title = document.createElement('h3');
+    title.className = 'related-dimension-title';
+    title.textContent = dimension.name;
+    
+    // Create category
+    const category = document.createElement('span');
+    category.className = 'related-dimension-category';
+    category.textContent = dimension.category;
+    
+    // Create description
+    const description = document.createElement('p');
+    description.className = 'related-dimension-description';
+    description.textContent = dimension.description.length > 100 
+        ? dimension.description.substring(0, 100) + '...' 
+        : dimension.description;
+    
+    // Create price
+    const price = document.createElement('div');
+    price.className = 'related-dimension-price';
+    price.textContent = dimension.price;
+    
+    // Create link
+    const link = document.createElement('a');
+    link.className = 'related-dimension-link';
+    link.href = `dimension.html?id=${dimension.id}`;
+    link.textContent = 'View Dimension';
+    
+    // Assemble the card
+    contentContainer.appendChild(title);
+    contentContainer.appendChild(category);
+    contentContainer.appendChild(description);
+    contentContainer.appendChild(price);
+    contentContainer.appendChild(link);
+    
+    card.appendChild(imageContainer);
+    card.appendChild(contentContainer);
+    
+    return card;
 }
 
 // Check if two descriptions share keywords
@@ -388,10 +544,74 @@ function addDetailStyles() {
             text-align: center;
         }
         
-        .related-grid {
+        .related-dimensions-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: var(--space-lg);
+        }
+        
+        .related-dimension-card {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            background: rgba(21, 21, 56, 0.5);
+        }
+        
+        .related-dimension-image {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            background: rgba(21, 21, 56, 0.5);
+            aspect-ratio: 4/3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .related-dimension-image object {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .related-dimension-content {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+        }
+        
+        .related-dimension-title {
+            font-size: 1.5rem;
+            margin-bottom: var(--space-sm);
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .related-dimension-category {
+            background: rgba(110, 0, 255, 0.2);
+            color: var(--primary);
+            padding: 0.25rem 0.75rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.9rem;
+        }
+        
+        .related-dimension-description {
+            margin-bottom: var(--space-md);
+            line-height: 1.7;
+        }
+        
+        .related-dimension-price {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+        
+        .related-dimension-link {
+            text-decoration: none;
+            color: var(--primary);
         }
         
         @media (max-width: 768px) {
@@ -403,7 +623,7 @@ function addDetailStyles() {
                 flex-direction: column;
             }
             
-            .related-grid {
+            .related-dimensions-grid {
                 grid-template-columns: 1fr;
             }
         }

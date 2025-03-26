@@ -128,7 +128,4 @@
       <animate attributeName="opacity" values="0.7;0.3;0.7" dur="1s" repeatCount="indefinite" />
     </line>
   </g>
-  
-  <!-- Titre de la dimension -->
-  <text x="200" y="280" font-family="'Orbitron', sans-serif" font-size="20" fill="#ffffff" text-anchor="middle">Terra Inversée</text>
 </svg>

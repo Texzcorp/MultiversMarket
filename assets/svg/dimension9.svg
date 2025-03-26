@@ -152,7 +152,4 @@
       <animate attributeName="opacity" values="0;0.8;0" dur="3s" repeatCount="indefinite" begin="0.5s" />
     </path>
   </g>
-  
-  <!-- Titre de la dimension -->
-  <text x="200" y="50" font-family="'Orbitron', sans-serif" font-size="20" fill="#ffffff" text-anchor="middle">Pulse Magnétique</text>
 </svg>

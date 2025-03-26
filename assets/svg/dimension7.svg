@@ -139,7 +139,4 @@
     <line x1="330" y1="250" x2="350" y2="250" stroke="#ffffff" stroke-width="0.5" />
     <text x="340" y="245" font-family="'Orbitron', sans-serif" font-size="5" fill="#ffffff" text-anchor="middle">1 nm</text>
   </g>
-  
-  <!-- Titre de la dimension -->
-  <text x="200" y="50" font-family="'Orbitron', sans-serif" font-size="20" fill="#ffffff" text-anchor="middle">Nano-Civilisation</text>
 </svg>
